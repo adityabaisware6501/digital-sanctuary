@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * GRAPES Luxury Salon & Spa design system.
+ * Bright cream / pearl base, deep charcoal ink, polished gold accents.
+ * All colors use oklch. Never hardcode colors in components.
  */
 
 @theme inline {
@@ -62,81 +54,78 @@
 }
 
 :root {
-  --radius: 0.125rem;
-  --background: oklch(0.16 0.012 285);
-  --foreground: oklch(0.95 0.006 90);
-  --card: oklch(0.21 0.014 285);
-  --card-foreground: oklch(0.95 0.006 90);
-  --popover: oklch(0.21 0.014 285);
-  --popover-foreground: oklch(0.95 0.006 90);
-  --primary: oklch(0.79 0.09 88);
-  --primary-foreground: oklch(0.17 0.012 285);
-  --secondary: oklch(0.26 0.016 285);
-  --secondary-foreground: oklch(0.95 0.006 90);
-  --muted: oklch(0.26 0.016 285);
-  --muted-foreground: oklch(0.72 0.012 90);
-  --accent: oklch(0.42 0.11 310);
-  --accent-foreground: oklch(0.96 0.006 90);
+  --radius: 0.25rem;
+  --background: oklch(0.985 0.008 90);
+  --foreground: oklch(0.22 0.008 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.008 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.008 285);
+  --primary: oklch(0.7 0.098 82);
+  --primary-foreground: oklch(0.18 0.008 285);
+  --secondary: oklch(0.95 0.016 88);
+  --secondary-foreground: oklch(0.24 0.008 285);
+  --muted: oklch(0.95 0.012 88);
+  --muted-foreground: oklch(0.48 0.01 285);
+  --accent: oklch(0.94 0.024 86);
+  --accent-foreground: oklch(0.24 0.008 285);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.79 0.09 88);
-  --chart-1: oklch(0.79 0.09 88);
-  --chart-2: oklch(0.42 0.11 310);
+  --border: oklch(0.88 0.014 88);
+  --input: oklch(0.88 0.014 88);
+  --ring: oklch(0.7 0.098 82);
+  --chart-1: oklch(0.7 0.098 82);
+  --chart-2: oklch(0.24 0.008 285);
   --chart-3: oklch(0.6 0.118 184.704);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.19 0.012 285);
-  --sidebar-foreground: oklch(0.95 0.006 90);
-  --sidebar-primary: oklch(0.79 0.09 88);
-  --sidebar-primary-foreground: oklch(0.17 0.012 285);
-  --sidebar-accent: oklch(0.26 0.016 285);
-  --sidebar-accent-foreground: oklch(0.95 0.006 90);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.79 0.09 88);
+  --sidebar: oklch(0.97 0.01 90);
+  --sidebar-foreground: oklch(0.22 0.008 285);
+  --sidebar-primary: oklch(0.7 0.098 82);
+  --sidebar-primary-foreground: oklch(0.18 0.008 285);
+  --sidebar-accent: oklch(0.94 0.024 86);
+  --sidebar-accent-foreground: oklch(0.24 0.008 285);
+  --sidebar-border: oklch(0.88 0.014 88);
+  --sidebar-ring: oklch(0.7 0.098 82);
 
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Jost", system-ui, sans-serif;
+  --cream: oklch(0.955 0.02 86);
+  --pearl: oklch(0.99 0.004 90);
+  --charcoal: oklch(0.19 0.008 285);
+  --charcoal-soft: oklch(0.26 0.01 285);
+  --gold: oklch(0.7 0.098 82);
+  --gold-deep: oklch(0.58 0.09 74);
 
-  --gold: oklch(0.79 0.09 88);
-  --gold-bright: oklch(0.9 0.07 92);
-  --silver: oklch(0.88 0.004 285);
   --gradient-gold: linear-gradient(
     100deg,
-    oklch(0.66 0.07 78),
-    oklch(0.92 0.07 94),
-    oklch(0.72 0.08 82)
+    oklch(0.62 0.088 76),
+    oklch(0.82 0.09 92),
+    oklch(0.66 0.094 78)
   );
-  --gradient-silver: linear-gradient(
-    100deg,
-    oklch(0.68 0.004 285),
-    oklch(0.97 0.002 285),
-    oklch(0.74 0.004 285)
-  );
-  --gradient-veil: linear-gradient(
-    to bottom,
-    oklch(0.1 0.012 285 / 0.82),
-    oklch(0.12 0.02 300 / 0.55) 45%,
-    oklch(0.09 0.012 285 / 0.94)
-  );
-  --shadow-lux: 0 30px 80px -30px oklch(0 0 0 / 0.85);
-  --shadow-gold: 0 0 60px -10px oklch(0.79 0.09 88 / 0.35);
+  --shadow-soft: 0 20px 50px -24px oklch(0.22 0.02 285 / 0.22);
+  --shadow-card: 0 10px 30px -18px oklch(0.22 0.02 285 / 0.28);
+  --shadow-gold: 0 12px 30px -12px oklch(0.7 0.098 82 / 0.45);
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme {
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-body: "Jost", system-ui, sans-serif;
-  --color-gold: oklch(0.79 0.09 88);
-  --color-gold-bright: oklch(0.9 0.07 92);
-  --color-silver: oklch(0.88 0.004 285);
+  --color-cream: oklch(0.955 0.02 86);
+  --color-pearl: oklch(0.99 0.004 90);
+  --color-charcoal: oklch(0.19 0.008 285);
+  --color-charcoal-soft: oklch(0.26 0.01 285);
+  --color-gold: oklch(0.7 0.098 82);
+  --color-gold-deep: oklch(0.58 0.09 74);
 }
-
 
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
@@ -144,7 +133,7 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     font-weight: 300;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.015em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -152,7 +141,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 
@@ -162,28 +151,15 @@
   color: transparent;
 }
 
-@utility text-silver-plate {
-  background-image: var(--gradient-silver);
-  background-clip: text;
-  color: transparent;
-}
-
 @utility tracking-lux {
-  letter-spacing: 0.42em;
+  letter-spacing: 0.34em;
 }
 
-@utility glass-panel {
-  background: color-mix(in oklab, var(--card) 45%, transparent);
-  backdrop-filter: blur(22px) saturate(140%);
-  border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
-  box-shadow: var(--shadow-lux);
-}
-
-@utility hairline {
+@utility hairline-gold {
   background: linear-gradient(
     to right,
     transparent,
-    color-mix(in oklab, var(--gold) 60%, transparent),
+    color-mix(in oklab, var(--gold) 70%, transparent),
     transparent
   );
 }
@@ -191,7 +167,7 @@
 @keyframes lux-rise {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(22px);
   }
   to {
     opacity: 1;
@@ -199,21 +175,6 @@
   }
 }
 
-@keyframes lux-drift {
-  0%,
-  100% {
-    transform: scale(1.06) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.14) translate3d(0, -1.5%, 0);
-  }
-}
-
 @utility animate-rise {
-  animation: lux-rise 1.4s var(--ease-lux) both;
+  animation: lux-rise 1s var(--ease-lux) both;
 }
-
-@utility animate-drift {
-  animation: lux-drift 26s ease-in-out infinite;
-}
-
