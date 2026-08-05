@@ -504,7 +504,7 @@ function Index() {
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(to top, oklch(0.19 0.008 285 / 0.72) 0%, transparent 52%)",
+                          "linear-gradient(to top, oklch(0.16 0.008 285 / 0.88) 0%, oklch(0.16 0.008 285 / 0.4) 30%, transparent 60%)",
                       }}
                     />
                     <div className="absolute inset-x-0 bottom-0 p-5">
@@ -579,7 +579,7 @@ function Index() {
             </div>
 
             <div className="mt-14 grid gap-7 lg:grid-cols-[1fr_1.15fr]">
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="grid content-start gap-5 sm:grid-cols-2 lg:grid-cols-1">
                 {[
                   {
                     icon: Phone,
