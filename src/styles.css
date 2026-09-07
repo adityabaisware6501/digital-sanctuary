@@ -6,9 +6,10 @@
 
 /*
  * GRAPES Luxury Salon & Spa design system.
- * Bright cream / pearl base, deep charcoal ink, polished gold accents.
+ * Dark luxury: matte black / espresso base, brass-bronze metallics, warm ivory ink.
  * All colors use oklch. Never hardcode colors in components.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -55,68 +56,75 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.985 0.008 90);
-  --foreground: oklch(0.22 0.008 285);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.008 285);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.008 285);
-  --primary: oklch(0.7 0.098 82);
-  --primary-foreground: oklch(0.18 0.008 285);
-  --secondary: oklch(0.95 0.016 88);
-  --secondary-foreground: oklch(0.24 0.008 285);
-  --muted: oklch(0.95 0.012 88);
-  --muted-foreground: oklch(0.48 0.01 285);
-  --accent: oklch(0.94 0.024 86);
-  --accent-foreground: oklch(0.24 0.008 285);
+  --background: oklch(0.16 0.006 60);
+  --foreground: oklch(0.94 0.012 88);
+  --card: oklch(0.21 0.009 62);
+  --card-foreground: oklch(0.94 0.012 88);
+  --popover: oklch(0.2 0.009 62);
+  --popover-foreground: oklch(0.94 0.012 88);
+  --primary: oklch(0.72 0.096 80);
+  --primary-foreground: oklch(0.15 0.008 60);
+  --secondary: oklch(0.24 0.012 62);
+  --secondary-foreground: oklch(0.93 0.012 88);
+  --muted: oklch(0.24 0.01 62);
+  --muted-foreground: oklch(0.72 0.014 84);
+  --accent: oklch(0.27 0.018 68);
+  --accent-foreground: oklch(0.94 0.012 88);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.014 88);
-  --input: oklch(0.88 0.014 88);
-  --ring: oklch(0.7 0.098 82);
-  --chart-1: oklch(0.7 0.098 82);
-  --chart-2: oklch(0.24 0.008 285);
+  --border: oklch(0.31 0.014 68);
+  --input: oklch(0.31 0.014 68);
+  --ring: oklch(0.72 0.096 80);
+  --chart-1: oklch(0.72 0.096 80);
+  --chart-2: oklch(0.94 0.012 88);
   --chart-3: oklch(0.6 0.118 184.704);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.97 0.01 90);
-  --sidebar-foreground: oklch(0.22 0.008 285);
-  --sidebar-primary: oklch(0.7 0.098 82);
-  --sidebar-primary-foreground: oklch(0.18 0.008 285);
-  --sidebar-accent: oklch(0.94 0.024 86);
-  --sidebar-accent-foreground: oklch(0.24 0.008 285);
-  --sidebar-border: oklch(0.88 0.014 88);
-  --sidebar-ring: oklch(0.7 0.098 82);
+  --sidebar: oklch(0.19 0.008 62);
+  --sidebar-foreground: oklch(0.94 0.012 88);
+  --sidebar-primary: oklch(0.72 0.096 80);
+  --sidebar-primary-foreground: oklch(0.15 0.008 60);
+  --sidebar-accent: oklch(0.27 0.018 68);
+  --sidebar-accent-foreground: oklch(0.94 0.012 88);
+  --sidebar-border: oklch(0.31 0.014 68);
+  --sidebar-ring: oklch(0.72 0.096 80);
 
-  --cream: oklch(0.955 0.02 86);
-  --pearl: oklch(0.99 0.004 90);
-  --charcoal: oklch(0.19 0.008 285);
-  --charcoal-soft: oklch(0.26 0.01 285);
-  --gold: oklch(0.7 0.098 82);
-  --gold-deep: oklch(0.58 0.09 74);
+  --espresso: oklch(0.21 0.012 62);
+  --onyx: oklch(0.13 0.005 60);
+  --ivory: oklch(0.95 0.014 88);
+  --charcoal: oklch(0.18 0.008 62);
+  --charcoal-soft: oklch(0.25 0.012 64);
+  --gold: oklch(0.76 0.1 84);
+  --gold-deep: oklch(0.66 0.098 76);
+  --bronze: oklch(0.52 0.078 66);
 
   --gradient-gold: linear-gradient(
     100deg,
-    oklch(0.62 0.088 76),
-    oklch(0.82 0.09 92),
-    oklch(0.66 0.094 78)
+    oklch(0.6 0.082 68),
+    oklch(0.86 0.096 92),
+    oklch(0.66 0.096 76)
   );
-  --shadow-soft: 0 20px 50px -24px oklch(0.22 0.02 285 / 0.22);
-  --shadow-card: 0 10px 30px -18px oklch(0.22 0.02 285 / 0.28);
-  --shadow-gold: 0 12px 30px -12px oklch(0.7 0.098 82 / 0.45);
+  --shadow-soft: 0 26px 60px -26px oklch(0.06 0.01 60 / 0.85);
+  --shadow-card: 0 16px 40px -22px oklch(0.06 0.01 60 / 0.8);
+  --shadow-gold: 0 14px 34px -14px oklch(0.72 0.096 80 / 0.4);
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme {
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Jost", system-ui, sans-serif;
-  --color-cream: oklch(0.955 0.02 86);
-  --color-pearl: oklch(0.99 0.004 90);
-  --color-charcoal: oklch(0.19 0.008 285);
-  --color-charcoal-soft: oklch(0.26 0.01 285);
-  --color-gold: oklch(0.7 0.098 82);
-  --color-gold-deep: oklch(0.58 0.09 74);
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Jost", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --color-espresso: oklch(0.21 0.012 62);
+  --color-onyx: oklch(0.13 0.005 60);
+  --color-ivory: oklch(0.95 0.014 88);
+  --color-pearl: oklch(0.95 0.014 88);
+  --color-cream: oklch(0.21 0.012 62);
+  --color-charcoal: oklch(0.18 0.008 62);
+  --color-charcoal-soft: oklch(0.25 0.012 64);
+  --color-gold: oklch(0.76 0.1 84);
+  --color-gold-deep: oklch(0.66 0.098 76);
+  --color-bronze: oklch(0.52 0.078 66);
 }
+
 
 @layer base {
   * {
@@ -126,6 +134,9 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
+    overflow-y: auto;
+    -webkit-text-size-adjust: 100%;
+    font-family: var(--font-body);
   }
 
   body {
@@ -135,15 +146,26 @@
     font-weight: 300;
     letter-spacing: 0.015em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  input,
+  textarea,
+  button,
+  select {
+    font-family: inherit;
   }
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  blockquote {
     font-family: var(--font-display);
     font-weight: 400;
   }
 }
+
 
 @utility text-gold-plate {
   background-image: var(--gradient-gold);
@@ -177,4 +199,46 @@
 
 @utility animate-rise {
   animation: lux-rise 1s var(--ease-lux) both;
+}
+
+@utility glow-veil {
+  background: radial-gradient(
+    120% 90% at 12% 30%,
+    color-mix(in oklab, var(--gold) 16%, transparent),
+    transparent 60%
+  );
+}
+
+@utility surface-espresso {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--espresso) 92%, transparent),
+      var(--onyx)
+    );
+}
+
+@keyframes lux-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility animate-pop {
+  animation: lux-fade 0.5s var(--ease-lux) both;
+}
+
+@utility hero-media {
+  object-position: 62% center;
+}
+
+@media (max-width: 767px) {
+  .hero-media {
+    object-position: 72% center;
+  }
 }
