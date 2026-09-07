@@ -6,9 +6,10 @@
 
 /*
  * GRAPES Luxury Salon & Spa design system.
- * Bright cream / pearl base, deep charcoal ink, polished gold accents.
+ * Dark luxury: matte black / espresso base, brass-bronze metallics, warm ivory ink.
  * All colors use oklch. Never hardcode colors in components.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
