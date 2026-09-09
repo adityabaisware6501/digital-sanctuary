@@ -12,27 +12,31 @@ import {
   Leaf,
 } from "lucide-react";
 
-import mark from "@/assets/grapes-mark.png";
-import heroSalon from "@/assets/hero-salon.jpg";
-import aboutSpa from "@/assets/about-spa.jpg";
-import serviceHair from "@/assets/service-hair.jpg";
-import panelGrape from "@/assets/panel-grape.jpg";
-import panelStone from "@/assets/panel-stone.jpg";
-import panelCream from "@/assets/panel-cream.jpg";
-import heroSpa from "@/assets/hero-spa.jpg";
-import team1 from "@/assets/team-1.jpg";
-import team2 from "@/assets/team-2.jpg";
-import team3 from "@/assets/team-3.jpg";
-import team4 from "@/assets/team-4.jpg";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { ConsultationPopup } from "@/components/ConsultationPopup";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
+
+/* All imagery is served from /public/assets/images with relative paths, so a
+   fresh clone of the repository renders every photo without extra setup. */
+const IMG = "assets/images/";
+const mark = IMG + "grapes-mark.png";
+const heroDark = IMG + "hero-dark-lux.jpg";
+const kansa = IMG + "dark-kansa.jpg";
+const stoneRoom = IMG + "dark-stones2.jpg";
+const darkStone = IMG + "dark-stone.jpg";
+const darkOil = IMG + "dark-oil.jpg";
+const darkHair = IMG + "dark-hair.jpg";
+const darkGrape = IMG + "panel-grape.jpg";
+const darkBridal = IMG + "dark-bridal.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "GRAPES Luxury Salon & Spa — Nagpur's Premium Salon" },
+      { title: "GRAPES Luxury Salon & Spa — Nagpur's Dark Luxury Salon" },
       {
         name: "description",
         content:
-          "GRAPES Luxury Salon & Spa, Trimurti Nagar Nagpur. Hair artistry, vinotherapy, stone therapy and Ayurvedic rituals delivered with premium Indian hospitality. Call 080872 21025 to book.",
+          "GRAPES Luxury Salon & Spa, Trimurti Nagar Nagpur. Hair artistry, vinotherapy, Kansa-bowl Ayurvedic rituals and bridal makeovers in a black-and-brass sanctuary. Call 080872 21025.",
       },
       { property: "og:title", content: "GRAPES Luxury Salon & Spa — Nagpur" },
       {
@@ -51,6 +55,7 @@ const NAV = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Transformations", href: "#transformations" },
   { label: "Specialists", href: "#specialists" },
   { label: "Contact Us", href: "#contact" },
 ];
@@ -60,37 +65,37 @@ const SERVICES = [
     name: "Signature Hair Styling",
     price: "from ₹1,200",
     note: "Precision cuts, gloss treatments and blowouts by senior stylists.",
-    media: serviceHair,
+    media: darkHair,
   },
   {
     name: "Vinotherapy Ritual",
     price: "from ₹3,500",
     note: "Cold-pressed grape seed oils, slow deep pressure, full body renewal.",
-    media: panelGrape,
+    media: darkGrape,
   },
   {
     name: "Stone Therapy",
     price: "from ₹2,800",
     note: "Warm basalt stones traced along the meridians to release tension.",
-    media: panelStone,
+    media: stoneRoom,
   },
   {
     name: "Radiance Facial",
     price: "from ₹2,200",
     note: "Polyphenol resurfacing finished with a cooling jade massage.",
-    media: panelCream,
+    media: darkStone,
   },
   {
     name: "Bridal & Occasion",
     price: "on consultation",
     note: "Curated multi-session packages for the bride and her family.",
-    media: aboutSpa,
+    media: darkBridal,
   },
   {
     name: "Ayurvedic Abhyanga",
     price: "from ₹2,900",
-    note: "Warm herbal oils applied in rhythmic strokes by trained therapists.",
-    media: heroSpa,
+    note: "Warm herbal oils poured from Kansa bowls in rhythmic strokes.",
+    media: darkOil,
   },
 ];
 
@@ -99,14 +104,14 @@ const ABOUT_TABS = [
     key: "story",
     label: "Our Story",
     icon: Sparkles,
-    heading: "A family-run house of beauty in Nagpur",
-    body: "GRAPES began on Ring Road, Trimurti Nagar with one belief — luxury should feel welcoming. Today our stylists and therapists serve thousands of guests a year, blending grape-derived vinotherapy with time-honoured Ayurvedic technique in rooms that stay bright, quiet and unhurried.",
+    heading: "A house of beauty behind a black storefront",
+    body: "GRAPES began on Ring Road, Trimurti Nagar with one belief — true luxury is quiet. Behind our black-and-brass facade, stylists and therapists serve thousands of guests a year, blending grape-derived vinotherapy with time-honoured Ayurvedic technique in low-lit, unhurried rooms.",
     stats: [
       ["16+", "Years of care"],
       ["4.6★", "Google rating"],
       ["200+", "Verified reviews"],
     ],
-    media: aboutSpa,
+    media: kansa,
   },
   {
     key: "hygiene",
@@ -119,20 +124,20 @@ const ABOUT_TABS = [
       ["UV+", "Tool sterilising"],
       ["Certified", "Therapists"],
     ],
-    media: panelStone,
+    media: stoneRoom,
   },
   {
     key: "rituals",
     label: "The Ritual",
     icon: Leaf,
     heading: "Chosen for you, never a template",
-    body: "You are greeted by name, offered chai, and consulted before anything begins. Your stylist maps hair history and scalp health; your therapist adjusts pressure, oils and temperature as the ritual unfolds. Transparent pricing, zero upselling.",
+    body: "You are greeted by name, offered masala chai, and consulted before anything begins. Your stylist maps hair history and scalp health; your therapist adjusts pressure, oils and temperature as the ritual unfolds. Transparent pricing, zero upselling.",
     stats: [
       ["15 min", "Consultation first"],
       ["Cruelty-free", "Product house"],
       ["No", "Upselling"],
     ],
-    media: panelCream,
+    media: darkOil,
   },
 ] as const;
 
@@ -142,28 +147,45 @@ const SPECIALISTS = [
     role: "Master Stylist",
     years: "12 years",
     note: "Precision cutting, balayage and bridal hair design.",
-    photo: team1,
+    photo: IMG + "team-1.jpg",
   },
   {
     name: "Rohit Menon",
     role: "Spa Director",
     years: "15 years",
     note: "Deep tissue, stone therapy and posture-led bodywork.",
-    photo: team2,
+    photo: IMG + "team-2.jpg",
   },
   {
     name: "Priya Iyer",
     role: "Skin & Radiance Expert",
     years: "9 years",
     note: "Clinical facials, pigmentation care and glow protocols.",
-    photo: team3,
+    photo: IMG + "team-3.jpg",
   },
   {
     name: "Kabir Anand",
     role: "Ayurvedic Therapist",
     years: "11 years",
     note: "Abhyanga, shirodhara and herbal oil therapies.",
-    photo: team4,
+    photo: IMG + "team-4.jpg",
+  },
+];
+
+const TRANSFORMATIONS = [
+  {
+    label: "Hair Styling & Colour",
+    caption:
+      "Frizz control, a warm caramel balayage and a signature gloss blowout — one sitting.",
+    before: IMG + "hair-before.jpg",
+    after: IMG + "hair-after.jpg",
+  },
+  {
+    label: "Bridal Makeover",
+    caption:
+      "HD bridal base, gold-and-maroon eye, kundan styling and dupatta draping for the muhurat.",
+    before: IMG + "bridal-before.jpg",
+    after: IMG + "bridal-after.jpg",
   },
 ];
 
@@ -228,9 +250,7 @@ function GoldButton({
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[0.62rem] tracking-lux text-gold-deep uppercase">{children}</p>
-  );
+  return <p className="text-[0.62rem] tracking-lux text-gold uppercase">{children}</p>;
 }
 
 function Index() {
@@ -240,7 +260,7 @@ function Index() {
   return (
     <div id="home" className="min-h-screen bg-background">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-onyx/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 md:px-10">
           <a href="#home" className="flex items-center gap-3">
             <img
@@ -251,21 +271,21 @@ function Index() {
               className="h-9 w-9 object-contain"
             />
             <span className="leading-none">
-              <span className="block font-display text-lg tracking-[0.28em] text-foreground uppercase">
+              <span className="block font-display text-lg tracking-[0.28em] text-ivory uppercase">
                 Grapes
               </span>
-              <span className="block text-[0.5rem] tracking-[0.28em] text-muted-foreground uppercase">
+              <span className="block text-[0.5rem] tracking-[0.28em] text-gold-deep uppercase">
                 Luxury Salon &amp; Spa
               </span>
             </span>
           </a>
 
-          <nav className="hidden items-center gap-9 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {NAV.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[0.66rem] tracking-[0.24em] text-muted-foreground uppercase transition-colors duration-200 hover:text-gold-deep"
+                className="text-[0.64rem] tracking-[0.22em] text-muted-foreground uppercase transition-colors duration-200 hover:text-gold"
               >
                 {item.label}
               </a>
@@ -280,37 +300,38 @@ function Index() {
         {/* Hero */}
         <section className="relative overflow-hidden">
           <img
-            src={heroSalon}
-            alt="Marble and brass styling suite at GRAPES Luxury Salon & Spa in Nagpur"
+            src={heroDark}
+            alt="Black and brass styling suite at GRAPES Luxury Salon & Spa in Nagpur"
             width={1920}
             height={1200}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="hero-media absolute inset-0 h-full w-full object-cover"
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(100deg, oklch(0.99 0.006 90 / 0.95) 0%, oklch(0.98 0.01 88 / 0.78) 46%, oklch(0.2 0.01 285 / 0.18) 100%)",
+                "linear-gradient(96deg, oklch(0.11 0.006 60 / 0.96) 0%, oklch(0.13 0.008 60 / 0.86) 48%, oklch(0.13 0.008 60 / 0.42) 100%)",
             }}
           />
+          <div className="glow-veil pointer-events-none absolute inset-0" />
           <div className="relative mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36">
             <div className="animate-rise max-w-2xl">
               <SectionLabel>Trimurti Nagar · Nagpur</SectionLabel>
-              <h1 className="mt-6 font-display text-4xl leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
+              <h1 className="mt-6 font-display text-4xl leading-[1.1] text-ivory sm:text-5xl md:text-6xl">
                 Experience Ultimate
                 <br />
                 <span className="text-gold-plate">Luxury &amp; Wellness</span>
               </h1>
-              <p className="mt-7 max-w-lg text-base leading-relaxed text-charcoal-soft">
-                A bright, serene sanctuary where master stylists and trained
-                therapists craft hair, skin and body rituals around you — with the
-                warmth of true Indian hospitality.
+              <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground">
+                A low-lit sanctuary of black stone and brass, where master stylists
+                and Ayurvedic therapists craft hair, skin and body rituals around
+                you — with the warmth of true Indian hospitality.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <GoldButton>Book Your Ritual</GoldButton>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-sm border border-gold/50 bg-card/70 px-7 py-3 text-[0.68rem] tracking-[0.26em] text-foreground uppercase transition-colors duration-200 hover:border-gold hover:bg-card"
+                  className="inline-flex items-center justify-center rounded-sm border border-gold/40 bg-espresso/60 px-7 py-3 text-[0.68rem] tracking-[0.26em] text-ivory uppercase backdrop-blur-sm transition-colors duration-200 hover:border-gold hover:bg-espresso"
                 >
                   View Services
                 </a>
@@ -322,7 +343,7 @@ function Index() {
                   ["4.6★", "Google rating"],
                 ].map(([stat, label]) => (
                   <div key={label}>
-                    <p className="font-display text-2xl text-foreground">{stat}</p>
+                    <p className="font-display text-2xl text-gold">{stat}</p>
                     <p className="text-[0.6rem] tracking-[0.24em] text-muted-foreground uppercase">
                       {label}
                     </p>
@@ -334,11 +355,11 @@ function Index() {
         </section>
 
         {/* About — interactive */}
-        <section id="about" className="bg-cream">
+        <section id="about" className="surface-espresso">
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <div className="max-w-xl">
               <SectionLabel>About Us</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl leading-tight text-foreground md:text-4xl">
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
                 Devoted to premium Indian hospitality
               </h2>
               <div className="mt-6 h-px w-28 hairline-gold" />
@@ -351,16 +372,16 @@ function Index() {
                   src={active.media}
                   alt={active.heading}
                   width={1024}
-                  height={1024}
+                  height={1280}
                   loading="lazy"
-                  className="animate-rise aspect-4/5 w-full rounded-sm object-cover"
+                  className="animate-rise aspect-4/5 w-full rounded-sm border border-border object-cover"
                   style={{ boxShadow: "var(--shadow-soft)" }}
                 />
                 <div
-                  className="absolute -right-4 -bottom-6 hidden rounded-sm border border-gold/40 bg-pearl px-6 py-5 sm:block"
+                  className="absolute -right-4 -bottom-6 hidden rounded-sm border border-gold/40 bg-onyx px-6 py-5 sm:block"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  <p className="font-display text-2xl text-gold-deep">Since 2009</p>
+                  <p className="font-display text-2xl text-gold">Since 2009</p>
                   <p className="text-[0.58rem] tracking-[0.24em] text-muted-foreground uppercase">
                     Nagpur original
                   </p>
@@ -380,12 +401,12 @@ function Index() {
                         aria-pressed={isActive}
                         className={`inline-flex items-center gap-2 rounded-sm border px-5 py-3 text-[0.62rem] tracking-[0.2em] uppercase transition-all duration-300 ${
                           isActive
-                            ? "border-gold bg-pearl text-foreground"
-                            : "border-border bg-transparent text-muted-foreground hover:border-gold/60 hover:text-foreground"
+                            ? "border-gold bg-onyx text-ivory"
+                            : "border-border bg-transparent text-muted-foreground hover:border-gold/60 hover:text-ivory"
                         }`}
                         style={isActive ? { boxShadow: "var(--shadow-card)" } : undefined}
                       >
-                        <Icon size={14} className="text-gold-deep" />
+                        <Icon size={14} className="text-gold" />
                         {item.label}
                       </button>
                     );
@@ -393,17 +414,19 @@ function Index() {
                 </div>
 
                 <div key={active.key} className="animate-rise mt-9">
-                  <h3 className="font-display text-2xl leading-snug text-foreground md:text-3xl">
+                  <h3 className="font-display text-2xl leading-snug text-ivory md:text-3xl">
                     {active.heading}
                   </h3>
-                  <p className="mt-5 leading-relaxed text-foreground/80">{active.body}</p>
+                  <p className="mt-5 leading-relaxed text-muted-foreground">
+                    {active.body}
+                  </p>
                   <div className="mt-9 grid gap-4 sm:grid-cols-3">
                     {active.stats.map(([value, label]) => (
                       <div
                         key={label}
-                        className="rounded-sm border border-border bg-pearl px-5 py-5 transition-colors duration-300 hover:border-gold"
+                        className="rounded-sm border border-border bg-onyx/60 px-5 py-5 transition-colors duration-300 hover:border-gold"
                       >
-                        <p className="font-display text-xl text-gold-deep">{value}</p>
+                        <p className="font-display text-xl text-gold">{value}</p>
                         <p className="mt-1 text-[0.58rem] tracking-[0.2em] text-muted-foreground uppercase">
                           {label}
                         </p>
@@ -421,7 +444,7 @@ function Index() {
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <div className="max-w-xl">
               <SectionLabel>Services &amp; Rituals</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl leading-tight text-foreground md:text-4xl">
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
                 Curated for hair, skin and stillness
               </h2>
               <p className="mt-5 leading-relaxed text-muted-foreground">
@@ -434,7 +457,7 @@ function Index() {
               {SERVICES.map((service) => (
                 <article
                   key={service.name}
-                  className="group overflow-hidden rounded-sm border border-border bg-pearl transition-all duration-300 hover:-translate-y-1 hover:border-gold"
+                  className="group overflow-hidden rounded-sm border border-border bg-espresso transition-all duration-300 hover:-translate-y-1 hover:border-gold"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
                   <div className="h-44 overflow-hidden">
@@ -448,10 +471,10 @@ function Index() {
                     />
                   </div>
                   <div className="p-7">
-                    <p className="text-[0.58rem] tracking-[0.26em] text-gold-deep uppercase">
+                    <p className="text-[0.58rem] tracking-[0.26em] text-gold uppercase">
                       {service.price}
                     </p>
-                    <h3 className="mt-3 font-display text-2xl text-foreground">
+                    <h3 className="mt-3 font-display text-2xl text-ivory">
                       {service.name}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -459,7 +482,7 @@ function Index() {
                     </p>
                     <a
                       href="#contact"
-                      className="mt-6 inline-block border-b border-gold/50 pb-1 text-[0.6rem] tracking-[0.26em] text-foreground uppercase transition-colors duration-200 group-hover:text-gold-deep"
+                      className="mt-6 inline-block border-b border-gold/50 pb-1 text-[0.6rem] tracking-[0.26em] text-ivory uppercase transition-colors duration-200 group-hover:text-gold"
                     >
                       Book this
                     </a>
@@ -470,12 +493,33 @@ function Index() {
           </div>
         </section>
 
+        {/* Before & After */}
+        <section id="transformations" className="surface-espresso">
+          <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
+            <div className="max-w-xl">
+              <SectionLabel>Before &amp; After</SectionLabel>
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
+                Drag to see the transformation
+              </h2>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                Real results from our styling floor and bridal studio. Slide the
+                gold handle across each image.
+              </p>
+            </div>
+            <div className="mt-14 grid gap-10 md:grid-cols-2">
+              {TRANSFORMATIONS.map((item) => (
+                <BeforeAfter key={item.label} {...item} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Specialists */}
-        <section id="specialists" className="bg-cream">
+        <section id="specialists" className="bg-background">
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <div className="max-w-xl">
               <SectionLabel>Our Specialists</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl leading-tight text-foreground md:text-4xl">
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
                 The hands behind every ritual
               </h2>
               <p className="mt-5 leading-relaxed text-muted-foreground">
@@ -488,7 +532,7 @@ function Index() {
               {SPECIALISTS.map((person) => (
                 <article
                   key={person.name}
-                  className="group overflow-hidden rounded-sm border border-border bg-pearl transition-all duration-500 hover:-translate-y-1.5 hover:border-gold"
+                  className="group overflow-hidden rounded-sm border border-border bg-espresso transition-all duration-500 hover:-translate-y-1.5 hover:border-gold"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
                   <div className="relative aspect-4/5 overflow-hidden">
@@ -504,14 +548,14 @@ function Index() {
                       className="pointer-events-none absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(to top, oklch(0.16 0.008 285 / 0.88) 0%, oklch(0.16 0.008 285 / 0.4) 30%, transparent 60%)",
+                          "linear-gradient(to top, oklch(0.11 0.006 60 / 0.94) 0%, oklch(0.11 0.006 60 / 0.45) 32%, transparent 62%)",
                       }}
                     />
                     <div className="absolute inset-x-0 bottom-0 p-5">
                       <p className="text-[0.55rem] tracking-[0.26em] text-gold uppercase">
                         {person.years}
                       </p>
-                      <h3 className="mt-1 font-display text-xl text-pearl">
+                      <h3 className="mt-1 font-display text-xl text-ivory">
                         {person.name}
                       </h3>
                     </div>
@@ -531,13 +575,11 @@ function Index() {
         </section>
 
         {/* Reviews */}
-        <section id="reviews" className="bg-charcoal">
+        <section id="reviews" className="bg-onyx">
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <div className="max-w-xl">
-              <p className="text-[0.62rem] tracking-lux text-gold uppercase">
-                Customer Reviews
-              </p>
-              <h2 className="mt-5 font-display text-3xl leading-tight text-pearl md:text-4xl">
+              <SectionLabel>Customer Reviews</SectionLabel>
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
                 Rated 4.6 by 200+ Google reviews
               </h2>
             </div>
@@ -545,17 +587,17 @@ function Index() {
               {REVIEWS.map((review) => (
                 <figure
                   key={review.name}
-                  className="rounded-sm border border-pearl/15 bg-charcoal-soft p-8 transition-colors duration-300 hover:border-gold/50"
+                  className="rounded-sm border border-border bg-espresso p-8 transition-colors duration-300 hover:border-gold/60"
                 >
                   <div className="flex gap-1 text-gold">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
                     ))}
                   </div>
-                  <blockquote className="mt-6 font-display text-lg leading-relaxed text-pearl/90">
+                  <blockquote className="mt-6 font-display text-lg leading-relaxed text-ivory/90">
                     “{review.quote}”
                   </blockquote>
-                  <figcaption className="mt-7 text-[0.62rem] tracking-[0.24em] text-pearl/60 uppercase">
+                  <figcaption className="mt-7 text-[0.62rem] tracking-[0.24em] text-muted-foreground uppercase">
                     {review.name} · {review.city}
                   </figcaption>
                 </figure>
@@ -569,7 +611,7 @@ function Index() {
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-32">
             <div className="max-w-xl">
               <SectionLabel>Contact Us</SectionLabel>
-              <h2 className="mt-5 font-display text-3xl leading-tight text-foreground md:text-4xl">
+              <h2 className="mt-5 font-display text-3xl leading-tight text-ivory md:text-4xl">
                 Reserve your chair in Trimurti Nagar
               </h2>
               <p className="mt-5 leading-relaxed text-muted-foreground">
@@ -608,17 +650,17 @@ function Index() {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="group flex items-start gap-4 rounded-sm border border-border bg-pearl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold"
+                      className="group flex items-start gap-4 rounded-sm border border-border bg-espresso p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold"
                       style={{ boxShadow: "var(--shadow-card)" }}
                     >
-                      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold-deep transition-colors duration-300 group-hover:border-gold">
+                      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors duration-300 group-hover:border-gold">
                         <Icon size={16} />
                       </span>
                       <span>
                         <span className="block text-[0.56rem] tracking-[0.24em] text-muted-foreground uppercase">
                           {item.label}
                         </span>
-                        <span className="mt-1 block font-display text-xl text-foreground">
+                        <span className="mt-1 block font-display text-xl text-ivory">
                           {item.value}
                         </span>
                         <span className="mt-1 block text-xs text-muted-foreground">
@@ -631,15 +673,15 @@ function Index() {
               </div>
 
               <div
-                className="overflow-hidden rounded-sm border border-border bg-cream"
+                className="overflow-hidden rounded-sm border border-border bg-espresso"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
                 <div className="grid gap-8 p-8 sm:grid-cols-2 md:p-10">
                   <div>
-                    <h3 className="flex items-center gap-2 text-[0.6rem] tracking-[0.26em] text-gold-deep uppercase">
+                    <h3 className="flex items-center gap-2 text-[0.6rem] tracking-[0.26em] text-gold uppercase">
                       <MapPin size={14} /> Visit us
                     </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-foreground/80">
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                       {ADDRESS_LINES[0]}
                       <br />
                       {ADDRESS_LINES[1]}
@@ -648,20 +690,20 @@ function Index() {
                       href={MAP_LINK}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-5 inline-block border-b border-gold/50 pb-1 text-[0.58rem] tracking-[0.26em] text-foreground uppercase transition-colors duration-200 hover:text-gold-deep"
+                      className="mt-5 inline-block border-b border-gold/50 pb-1 text-[0.58rem] tracking-[0.26em] text-ivory uppercase transition-colors duration-200 hover:text-gold"
                     >
                       Get directions
                     </a>
                   </div>
                   <div>
-                    <h3 className="flex items-center gap-2 text-[0.6rem] tracking-[0.26em] text-gold-deep uppercase">
+                    <h3 className="flex items-center gap-2 text-[0.6rem] tracking-[0.26em] text-gold uppercase">
                       <Clock size={14} /> Opening hours
                     </h3>
-                    <ul className="mt-4 space-y-2.5 text-sm text-foreground/80">
+                    <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
                       {HOURS.map(([days, time]) => (
                         <li key={days} className="flex justify-between gap-4">
                           <span>{days}</span>
-                          <span className="text-muted-foreground">{time}</span>
+                          <span className="text-ivory/70">{time}</span>
                         </li>
                       ))}
                     </ul>
@@ -672,11 +714,11 @@ function Index() {
                     title="GRAPES Luxury Salon & Spa location map"
                     src="https://www.google.com/maps?q=Grapes%20Luxury%20Salon%20%26%20Spa%20Trimurti%20Nagar%20Nagpur&output=embed"
                     loading="lazy"
-                    className="h-72 w-full border-0 grayscale-[0.35] transition-all duration-500 hover:grayscale-0"
+                    className="h-72 w-full border-0 grayscale invert-[0.9] transition-all duration-500 hover:grayscale-0 hover:invert-0"
                   />
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border px-8 py-6 md:px-10">
-                  <p className="font-display text-xl text-foreground">
+                  <p className="font-display text-xl text-ivory">
                     Same-week appointments available.
                   </p>
                   <GoldButton href={PHONE_LINK}>Book Appointment</GoldButton>
@@ -688,7 +730,7 @@ function Index() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-pearl">
+      <footer className="bg-onyx">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-4 md:px-10">
           <div>
             <div className="flex items-center gap-3">
@@ -700,24 +742,24 @@ function Index() {
                 loading="lazy"
                 className="h-8 w-8 object-contain"
               />
-              <span className="font-display text-base tracking-[0.28em] text-foreground uppercase">
+              <span className="font-display text-base tracking-[0.28em] text-ivory uppercase">
                 Grapes
               </span>
             </div>
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               Luxury salon &amp; spa in Nagpur. Vinotherapy, hair artistry and
-              Ayurvedic wellness under one bright roof.
+              Ayurvedic wellness in black stone and brass.
             </p>
           </div>
 
           <div>
-            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold-deep uppercase">
+            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold uppercase">
               Contact
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-gold-deep" />
-                <a href={PHONE_LINK} className="hover:text-foreground">
+                <a href={PHONE_LINK} className="hover:text-ivory">
                   {PHONE_DISPLAY}
                 </a>
               </li>
@@ -733,7 +775,7 @@ function Index() {
           </div>
 
           <div>
-            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold-deep uppercase">
+            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold uppercase">
               Opening Hours
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
@@ -749,13 +791,13 @@ function Index() {
           </div>
 
           <div>
-            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold-deep uppercase">
+            <h3 className="text-[0.62rem] tracking-[0.26em] text-gold uppercase">
               Explore
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
               {[...NAV, { label: "Reviews", href: "#reviews" }].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-foreground">
+                  <a href={item.href} className="hover:text-ivory">
                     {item.label}
                   </a>
                 </li>
@@ -769,6 +811,9 @@ function Index() {
           </p>
         </div>
       </footer>
+
+      <WhatsAppFab />
+      <ConsultationPopup />
     </div>
   );
 }
