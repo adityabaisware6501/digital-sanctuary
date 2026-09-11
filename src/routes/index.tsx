@@ -255,14 +255,15 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function Index() {
   const [tab, setTab] = useState<string>(ABOUT_TABS[0].key);
+  const [menu, setMenu] = useState(false);
   const active = ABOUT_TABS.find((t) => t.key === tab) ?? ABOUT_TABS[0];
 
   return (
     <div id="home" className="min-h-screen bg-background">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-border/70 bg-onyx/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 md:px-10">
-          <a href="#home" className="flex items-center gap-3">
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-onyx/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3.5 md:px-10">
+          <a href="#home" className="flex shrink-0 items-center gap-2.5">
             <img
               src={mark}
               alt="GRAPES Luxury Salon & Spa logo"
@@ -271,10 +272,10 @@ function Index() {
               className="h-9 w-9 object-contain"
             />
             <span className="leading-none">
-              <span className="block font-display text-lg tracking-[0.28em] text-ivory uppercase">
+              <span className="block font-display text-base tracking-[0.26em] text-ivory uppercase sm:text-lg">
                 Grapes
               </span>
-              <span className="block text-[0.5rem] tracking-[0.28em] text-gold-deep uppercase">
+              <span className="mt-1 block text-[0.46rem] tracking-[0.22em] whitespace-nowrap text-gold-deep uppercase sm:text-[0.5rem]">
                 Luxury Salon &amp; Spa
               </span>
             </span>
@@ -292,9 +293,38 @@ function Index() {
             ))}
           </nav>
 
-          <GoldButton className="shrink-0">Book Appointment</GoldButton>
+          <div className="flex items-center gap-2">
+            <GoldButton className="shrink-0 px-4 py-2.5 text-[0.58rem] sm:px-7 sm:py-3 sm:text-[0.68rem]">
+              Book
+            </GoldButton>
+            <button
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={menu}
+              onClick={() => setMenu((v) => !v)}
+              className="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-gold lg:hidden"
+            >
+              {menu ? <X size={16} /> : <Menu size={16} />}
+            </button>
+          </div>
         </div>
+
+        {menu && (
+          <nav className="animate-pop border-t border-border bg-onyx px-5 pb-5 lg:hidden">
+            {NAV.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenu(false)}
+                className="block border-b border-border/60 py-4 text-[0.66rem] tracking-[0.24em] text-muted-foreground uppercase transition-colors hover:text-gold"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
+
 
       <main>
         {/* Hero */}
