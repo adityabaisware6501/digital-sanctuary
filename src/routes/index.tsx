@@ -4,13 +4,16 @@ import {
   Clock,
   Instagram,
   MapPin,
+  Menu,
   MessageCircle,
   Phone,
   Star,
   Sparkles,
   ShieldCheck,
   Leaf,
+  X,
 } from "lucide-react";
+
 
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { ConsultationPopup } from "@/components/ConsultationPopup";
