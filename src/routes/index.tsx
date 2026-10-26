@@ -493,13 +493,13 @@ function Index() {
                   className="group overflow-hidden rounded-sm border border-border bg-espresso transition-all duration-300 hover:-translate-y-1 hover:border-gold"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  <div className="h-44 overflow-hidden">
+                  <div className="aspect-4/5 overflow-hidden">
                     <img
                       src={service.media}
                       alt={service.name}
                       loading="lazy"
                       width={1024}
-                      height={768}
+                      height={1280}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
